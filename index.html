@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Number Guessing Game</title>
+</head>
+<body>
+Try this simple number guessing game i have written in javascript
+https://jsfiddle.net/hirdesh08/ftc600zk/16/
+1. When you start the game, a random number(between 1 to 100) gets generated for you to choose.<br>
+2. You have 10 changes to guess that number, on every guess you will see a hint about your guess.<br>
+3. If you guess correct within 10 chances, you won, otherwise you loose the game.<br>
+
+<script type="text/javascript">
+	var n = Math.floor((Math.random() * 100) + 1);
+	var step = 0;
+
+	function ask(str, res) {
+	  step++;
+	  if (res === true) {alert(str); return true;}
+	  str = "step-" + step + "\n" + str;
+	  str += "\n";
+	  var guess = prompt(str + "enter your guess");
+	  guess != null ?
+	    guess == n ?
+	    ask(":) You Won!", true) :
+	    (step >= 10 ?
+	      ask(":( Game Over!", true) :
+	      (guess > n ?
+	        ask(guess + "- You guessed too high.", false) :
+	        (guess < n ?
+	          ask(guess + "- You guessed too low.", false) :
+	          true
+	        )
+	      )
+	    ) :
+	    alert("You Quit the game !");
+	  return true;
+	}
+	ask("Start the game.", false);
+
+</script>
+</body>
+
+</html>
